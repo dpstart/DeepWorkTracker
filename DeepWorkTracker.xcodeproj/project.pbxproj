@@ -7,21 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D14DEE21E646A8100D916FB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D14DEE11E646A8100D916FB /* MainViewController.swift */; };
+		4D14DEE51E64CF3500D916FB /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D14DEE41E64CF3500D916FB /* CustomLabel.swift */; };
+		4D14DEE71E64CF5E00D916FB /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D14DEE61E64CF5E00D916FB /* Button.swift */; };
+		4D14DEE91E64CF9A00D916FB /* TextFIeld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D14DEE81E64CF9A00D916FB /* TextFIeld.swift */; };
+		4D45CC6F1E63816800A78526 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D45CC6E1E63816800A78526 /* GoogleService-Info.plist */; };
 		4DC702C41E637FEE00A8FD8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC702C31E637FEE00A8FD8C /* AppDelegate.swift */; };
-		4DC702C61E637FEE00A8FD8C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC702C51E637FEE00A8FD8C /* ViewController.swift */; };
+		4DC702C61E637FEE00A8FD8C /* Authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC702C51E637FEE00A8FD8C /* Authenticate.swift */; };
 		4DC702C91E637FEE00A8FD8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DC702C71E637FEE00A8FD8C /* Main.storyboard */; };
 		4DC702CB1E637FEE00A8FD8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DC702CA1E637FEE00A8FD8C /* Assets.xcassets */; };
 		4DC702CE1E637FEE00A8FD8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DC702CC1E637FEE00A8FD8C /* LaunchScreen.storyboard */; };
+		A8D38F105E91E4F8E598179A /* Pods_DeepWorkTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB66067A2D73D6A7614CE2E /* Pods_DeepWorkTracker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13D74669A2834B69D487FD95 /* Pods-DeepWorkTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepWorkTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeepWorkTracker/Pods-DeepWorkTracker.release.xcconfig"; sourceTree = "<group>"; };
+		4D14DEE11E646A8100D916FB /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		4D14DEE41E64CF3500D916FB /* CustomLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		4D14DEE61E64CF5E00D916FB /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		4D14DEE81E64CF9A00D916FB /* TextFIeld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFIeld.swift; sourceTree = "<group>"; };
+		4D45CC6E1E63816800A78526 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4DC702C01E637FED00A8FD8C /* DeepWorkTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepWorkTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC702C31E637FEE00A8FD8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4DC702C51E637FEE00A8FD8C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4DC702C51E637FEE00A8FD8C /* Authenticate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticate.swift; sourceTree = "<group>"; };
 		4DC702C81E637FEE00A8FD8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4DC702CA1E637FEE00A8FD8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4DC702CD1E637FEE00A8FD8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4DC702CF1E637FEE00A8FD8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CB66067A2D73D6A7614CE2E /* Pods_DeepWorkTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeepWorkTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD830747CA1FBAB5800D312E /* Pods-DeepWorkTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepWorkTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeepWorkTracker/Pods-DeepWorkTracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +43,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8D38F105E91E4F8E598179A /* Pods_DeepWorkTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D14DEE31E64CF2700D916FB /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				4D14DEE41E64CF3500D916FB /* CustomLabel.swift */,
+				4D14DEE61E64CF5E00D916FB /* Button.swift */,
+				4D14DEE81E64CF9A00D916FB /* TextFIeld.swift */,
+			);
+			name = Custom;
+			sourceTree = "<group>";
+		};
 		4DC702B71E637FE600A8FD8C = {
 			isa = PBXGroup;
 			children = (
 				4DC702C21E637FED00A8FD8C /* DeepWorkTracker */,
 				4DC702C11E637FED00A8FD8C /* Products */,
+				991E2F677DD2831A6BA40958 /* Pods */,
+				68BE79DDE8A96968DAD2874D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +81,34 @@
 		4DC702C21E637FED00A8FD8C /* DeepWorkTracker */ = {
 			isa = PBXGroup;
 			children = (
+				4D14DEE31E64CF2700D916FB /* Custom */,
 				4DC702C31E637FEE00A8FD8C /* AppDelegate.swift */,
-				4DC702C51E637FEE00A8FD8C /* ViewController.swift */,
+				4DC702C51E637FEE00A8FD8C /* Authenticate.swift */,
+				4D14DEE11E646A8100D916FB /* MainViewController.swift */,
 				4DC702C71E637FEE00A8FD8C /* Main.storyboard */,
 				4DC702CA1E637FEE00A8FD8C /* Assets.xcassets */,
 				4DC702CC1E637FEE00A8FD8C /* LaunchScreen.storyboard */,
 				4DC702CF1E637FEE00A8FD8C /* Info.plist */,
+				4D45CC6E1E63816800A78526 /* GoogleService-Info.plist */,
 			);
 			path = DeepWorkTracker;
+			sourceTree = "<group>";
+		};
+		68BE79DDE8A96968DAD2874D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7CB66067A2D73D6A7614CE2E /* Pods_DeepWorkTracker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		991E2F677DD2831A6BA40958 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FD830747CA1FBAB5800D312E /* Pods-DeepWorkTracker.debug.xcconfig */,
+				13D74669A2834B69D487FD95 /* Pods-DeepWorkTracker.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +118,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4DC702D21E637FEE00A8FD8C /* Build configuration list for PBXNativeTarget "DeepWorkTracker" */;
 			buildPhases = (
+				F95FD41A2C03F9A4B159136B /* [CP] Check Pods Manifest.lock */,
 				4DC702BC1E637FE700A8FD8C /* Sources */,
 				4DC702BD1E637FE700A8FD8C /* Frameworks */,
 				4DC702BE1E637FE700A8FD8C /* Resources */,
+				91D052216C0A386B9EE4E017 /* [CP] Embed Pods Frameworks */,
+				BC2F7123D4B786EA077399B3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,6 +146,7 @@
 				TargetAttributes = {
 					4DC702BF1E637FE700A8FD8C = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 9U63HC2G6Q;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -124,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DC702CE1E637FEE00A8FD8C /* LaunchScreen.storyboard in Resources */,
+				4D45CC6F1E63816800A78526 /* GoogleService-Info.plist in Resources */,
 				4DC702CB1E637FEE00A8FD8C /* Assets.xcassets in Resources */,
 				4DC702C91E637FEE00A8FD8C /* Main.storyboard in Resources */,
 			);
@@ -131,13 +183,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		91D052216C0A386B9EE4E017 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeepWorkTracker/Pods-DeepWorkTracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC2F7123D4B786EA077399B3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeepWorkTracker/Pods-DeepWorkTracker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F95FD41A2C03F9A4B159136B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4DC702BC1E637FE700A8FD8C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DC702C61E637FEE00A8FD8C /* ViewController.swift in Sources */,
+				4D14DEE71E64CF5E00D916FB /* Button.swift in Sources */,
+				4D14DEE21E646A8100D916FB /* MainViewController.swift in Sources */,
+				4DC702C61E637FEE00A8FD8C /* Authenticate.swift in Sources */,
+				4D14DEE91E64CF9A00D916FB /* TextFIeld.swift in Sources */,
 				4DC702C41E637FEE00A8FD8C /* AppDelegate.swift in Sources */,
+				4D14DEE51E64CF3500D916FB /* CustomLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,8 +360,10 @@
 		};
 		4DC702D31E637FEE00A8FD8C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD830747CA1FBAB5800D312E /* Pods-DeepWorkTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9U63HC2G6Q;
 				INFOPLIST_FILE = DeepWorkTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.adall.DeepWorkTracker;
@@ -268,8 +374,10 @@
 		};
 		4DC702D41E637FEE00A8FD8C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13D74669A2834B69D487FD95 /* Pods-DeepWorkTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9U63HC2G6Q;
 				INFOPLIST_FILE = DeepWorkTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.adall.DeepWorkTracker;
@@ -297,6 +405,7 @@
 				4DC702D41E637FEE00A8FD8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
