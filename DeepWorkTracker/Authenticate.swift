@@ -11,6 +11,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import Firebase
 import GoogleSignIn
+import LBTAComponents
 
 
 // Put this piece of code anywhere you like
@@ -238,50 +239,51 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
         hideKeyboardWhenTappedAround()
         
-        
-        let btnFrame = CGRect(x: 0, y: 0, width: 270, height: 45)
-        
-        let  loginBtn = Button(frame: btnFrame, text: "Log in")
-        loginBtn.addTarget(self, action: #selector(authenticate), for: .touchUpInside)
-        view.addSubview(loginBtn)
-        loginBtn.center = CGPoint(x: view.center.x , y:view.frame.maxY - 40 - 150)
-        
         let frame = CGRect(x: 0, y: 0, width: 270, height: 45)
         
-        password = TextField(frame: frame)
-        view.addSubview(password)
-        password.center = CGPoint(x: self.view.center.x, y: loginBtn.frame.minY - 60)
-        password.isSecureTextEntry = true
         
         username = TextField(frame: frame)
         view.addSubview(username)
-        username.center = CGPoint(x: self.view.center.x, y: password.frame.minY - 40)
+        username.center = CGPoint(x: self.view.center.x , y: view.center.y - view.frame.height/5)
         
-        let googleAuth = GIDSignInButton()
-        googleAuth.frame = CGRect(x: 0, y: 0, width: 270, height: 30)
-        googleAuth.center = CGPoint(x: view.center.x, y: username.frame.minY - 35)
-        //googleAuth.layer.cornerRadius = googleAuth.frame.height/2
-        //googleAuth.clipsToBounds = true
-        view.addSubview(googleAuth)
+        password = TextField(frame: frame)
+        view.addSubview(password)
+        password.isSecureTextEntry = true
         
-        let lbl = UILabel()
-        lbl.text = "If you don't have an account, one will automatically be created for you"
-        lbl.frame = CGRect(x: 5, y: loginBtn.frame.maxY + 20, width: view.frame.width - 10, height: 20)
-        lbl.numberOfLines = 2
-        lbl.font = UIFont.systemFont(ofSize: 12)
-        lbl.textColor = .red
-        lbl.textAlignment = .center
-        //lbl.backgroundColor = .red
-        view.addSubview(lbl)
+        password.anchor(username.bottomAnchor, left: username.leftAnchor, bottom: nil, right: nil, topConstant: 10, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: password.frame.width, heightConstant: password.frame.height)
+
+        
+        let  loginBtn = Button(frame: frame, text: "Log in")
+        loginBtn.addTarget(self, action: #selector(authenticate), for: .touchUpInside)
+        view.addSubview(loginBtn)
+        loginBtn.anchor(password.bottomAnchor, left: password.leftAnchor, bottom: nil, right: nil, topConstant: 20, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: loginBtn.frame.width, heightConstant: loginBtn.frame.height)
+    
+        let noticeLbl = UILabel()
+        noticeLbl.text = "If you don't have an account,one will automatically be created for you"
+        //noticeLbl.frame = CGRect(x: 5, y: loginBtn.frame.maxY + 20, width: view.frame.width - 10, height: 20)
+        noticeLbl.lineBreakMode = .byWordWrapping
+        noticeLbl.numberOfLines = 0
+        noticeLbl.font = UIFont.systemFont(ofSize: 13)
+        noticeLbl.textColor = .red
+        noticeLbl.textAlignment = .center
+        view.addSubview(noticeLbl)
+        
+        noticeLbl.anchor(loginBtn.bottomAnchor, left: view.leftAnchor, bottom: nil, right: nil, topConstant: 20, leftConstant: 15, bottomConstant: 0, rightConstant: 0, widthConstant: view.frame.width-30, heightConstant: 35)
         
         let resetPassBtn = UIButton()
         resetPassBtn.setTitle("I forgot my password", for: .normal)
         resetPassBtn.setTitleColor(.black, for: .normal)
         resetPassBtn.frame = CGRect(x: 0, y: 0, width: view.frame.width-50, height: 30)
-        resetPassBtn.center = CGPoint(x: view.center.x, y: lbl.frame.maxY + 40)
         resetPassBtn.addTarget(self, action: #selector(resetPassword), for: .touchUpInside)
         view.addSubview(resetPassBtn)
+        
+        resetPassBtn.anchor(noticeLbl.bottomAnchor, left: noticeLbl.leftAnchor, bottom: nil, right: nil, topConstant: 20, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: resetPassBtn.frame.width, heightConstant: 30)
+        
+        let googleAuth = GIDSignInButton()
+        googleAuth.frame = CGRect(x: 0, y: 0, width: 300, height: 30)
+        view.addSubview(googleAuth)
    
+        googleAuth.anchor(resetPassBtn.bottomAnchor, left: view.leftAnchor, bottom: nil, right: nil, topConstant: 30, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: googleAuth.frame.width, heightConstant: googleAuth.frame.height)
     }
 }
 
