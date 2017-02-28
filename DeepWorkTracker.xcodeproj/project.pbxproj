@@ -14,6 +14,9 @@
 		4D14DEEB1E65B56000D916FB /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D14DEEA1E65B56000D916FB /* StatsViewController.swift */; };
 		4D14DEF11E65B88100D916FB /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D14DEF01E65B88100D916FB /* Charts.framework */; };
 		4D14DEF21E65B88100D916FB /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4D14DEF01E65B88100D916FB /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4D14DEF71E65E6CC00D916FB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D14DEF41E65E6CC00D916FB /* Bolts.framework */; };
+		4D14DEF81E65E6CC00D916FB /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D14DEF51E65E6CC00D916FB /* FBSDKCoreKit.framework */; };
+		4D14DEF91E65E6CC00D916FB /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D14DEF61E65E6CC00D916FB /* FBSDKLoginKit.framework */; };
 		4D45CC6F1E63816800A78526 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D45CC6E1E63816800A78526 /* GoogleService-Info.plist */; };
 		4DC702C41E637FEE00A8FD8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC702C31E637FEE00A8FD8C /* AppDelegate.swift */; };
 		4DC702C61E637FEE00A8FD8C /* Authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC702C51E637FEE00A8FD8C /* Authenticate.swift */; };
@@ -45,6 +48,10 @@
 		4D14DEE81E64CF9A00D916FB /* TextFIeld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFIeld.swift; sourceTree = "<group>"; };
 		4D14DEEA1E65B56000D916FB /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		4D14DEF01E65B88100D916FB /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D14DEF41E65E6CC00D916FB /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../Documents/FacebookSDKs-iOS-4.19.0/Bolts.framework"; sourceTree = "<group>"; };
+		4D14DEF51E65E6CC00D916FB /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../Documents/FacebookSDKs-iOS-4.19.0/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		4D14DEF61E65E6CC00D916FB /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../Documents/FacebookSDKs-iOS-4.19.0/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
+		4D14DEFA1E65E84400D916FB /* bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bridging-header.h"; sourceTree = "<group>"; };
 		4D45CC6E1E63816800A78526 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4DC702C01E637FED00A8FD8C /* DeepWorkTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepWorkTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC702C31E637FEE00A8FD8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +69,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D14DEF71E65E6CC00D916FB /* Bolts.framework in Frameworks */,
+				4D14DEF81E65E6CC00D916FB /* FBSDKCoreKit.framework in Frameworks */,
+				4D14DEF91E65E6CC00D916FB /* FBSDKLoginKit.framework in Frameworks */,
 				A8D38F105E91E4F8E598179A /* Pods_DeepWorkTracker.framework in Frameworks */,
 				4D14DEF11E65B88100D916FB /* Charts.framework in Frameworks */,
 			);
@@ -112,6 +122,7 @@
 				4DC702CC1E637FEE00A8FD8C /* LaunchScreen.storyboard */,
 				4DC702CF1E637FEE00A8FD8C /* Info.plist */,
 				4D45CC6E1E63816800A78526 /* GoogleService-Info.plist */,
+				4D14DEFA1E65E84400D916FB /* bridging-header.h */,
 			);
 			path = DeepWorkTracker;
 			sourceTree = "<group>";
@@ -119,6 +130,9 @@
 		68BE79DDE8A96968DAD2874D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4D14DEF41E65E6CC00D916FB /* Bolts.framework */,
+				4D14DEF51E65E6CC00D916FB /* FBSDKCoreKit.framework */,
+				4D14DEF61E65E6CC00D916FB /* FBSDKLoginKit.framework */,
 				7CB66067A2D73D6A7614CE2E /* Pods_DeepWorkTracker.framework */,
 			);
 			name = Frameworks;
@@ -388,10 +402,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9U63HC2G6Q;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/GTMOAuth2\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/GTMSessionFetcher\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/GoogleToolboxForMac\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/LBTAComponents\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseAuth/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseCore/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseDatabase/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleAppUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleInterchangeUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleSignIn/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleSymbolUtilities/Frameworks/frameworks\"",
+					"~/Documents/FacebookSDK",
+				);
 				INFOPLIST_FILE = DeepWorkTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.adall.DeepWorkTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DeepWorkTracker/bridging-header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -402,10 +434,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9U63HC2G6Q;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/GTMOAuth2\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/GTMSessionFetcher\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/GoogleToolboxForMac\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/LBTAComponents\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseAuth/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseCore/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseDatabase/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleAppUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleInterchangeUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleSignIn/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleSymbolUtilities/Frameworks/frameworks\"",
+					"~/Documents/FacebookSDK",
+				);
 				INFOPLIST_FILE = DeepWorkTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.adall.DeepWorkTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DeepWorkTracker/bridging-header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

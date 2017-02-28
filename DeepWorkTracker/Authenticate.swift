@@ -12,6 +12,7 @@ import FirebaseDatabase
 import Firebase
 import GoogleSignIn
 import LBTAComponents
+import FBSDKLoginKit
 
 
 // Put this piece of code anywhere you like
@@ -26,7 +27,7 @@ extension UIViewController {
     }
 }
 
-class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
+class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FBSDKLoginButtonDelegate {
     
     
     var username = TextField()
@@ -228,8 +229,59 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     }
     
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error?) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        
+        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+            // ...
+            if let error = error {
+                // ...
+                return
+            }
+            
+            if result.grantedPermissions.contains("email")
+            {
+                // Do work
+            }
+            
+            self.getFBUserData()
+            
+            print(user?.email)
+          
+            self.ref.child("users").child((user?.uid)!).setValue(["username" : user?.email ?? "", "hours" : 0, "this_month":0, "this_week":0, "today":0, "goal" : 0, "weekly" : [0,0,0,0,0,0,0]])
+            
+            
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "nav")
+            self.present(vc!, animated: true, completion: nil)
+        }
+    }
+    
+    public func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!){}
+    
+    func getFBUserData() {
+        
+        FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id,email,name,picture.width(480).height(480)"]).start(completionHandler: { (connection, result, error) -> Void in
+            
+            if ((error) != nil)
+            {
+                // Process error
+                print("Error: \(error)")
+            }
+            else
+            {
+                print("fetched user: \(result)")
+                
+            }
+        })
 
-    override func viewDidLoad() {
+    
+    }
+   
+       override func viewDidLoad() {
         
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
@@ -237,10 +289,10 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         ref = FIRDatabase.database().reference()
         //GIDSignIn.sharedInstance().signIn()
         
-        hideKeyboardWhenTappedAround()
+        //hideKeyboardWhenTappedAround()
+    
         
         let frame = CGRect(x: 0, y: 0, width: 270, height: 45)
-        
         
         username = TextField(frame: frame)
         view.addSubview(username)
@@ -284,6 +336,13 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         view.addSubview(googleAuth)
    
         googleAuth.anchor(resetPassBtn.bottomAnchor, left: view.leftAnchor, bottom: nil, right: nil, topConstant: 30, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: googleAuth.frame.width, heightConstant: googleAuth.frame.height)
+        
+        let FBLoginButton = FBSDKLoginButton()
+        FBLoginButton.delegate = self
+        FBLoginButton.readPermissions = ["public_profile", "email"]
+
+        view.addSubview(FBLoginButton)
+        FBLoginButton.anchor(googleAuth.bottomAnchor, left: googleAuth.leftAnchor, bottom: nil, right: nil, topConstant: 10, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: googleAuth.frame.width, heightConstant: 100)
     }
 }
 
