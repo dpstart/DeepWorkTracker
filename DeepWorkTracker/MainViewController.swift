@@ -114,7 +114,7 @@ class MainViewController: UIViewController {
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
-            let username = value?["username"] as? String ?? ""
+            //let username = value?["username"] as? String ?? ""
             let hours = value?["hours"] as? Int ?? 0
             let monthly = value?["this_month"] as? Int ?? 0
             let weekly = value?["this_week"] as? Int ?? 0

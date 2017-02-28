@@ -75,7 +75,7 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                 }else{
                     
                     print("User not registered")
-                    self.ref.child("users").child((user?.uid)!).setValue(["username" : user?.email, "hours" : 0, "this_month":0, "this_week":0, "today":0, "goal" : 0])
+                    self.ref.child("users").child((user?.uid)!).setValue(["username" : user?.email, "hours" : 0, "this_month":0, "this_week":0, "today":0, "goal" : 0, "weekly" : [0,0,0,0,0,0,0]])
                 }
                 
                 
@@ -118,9 +118,10 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
                     print("You have successfully signed up")
                     //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
                     Username = self.username.text!
-                    self.ref.child("users").child((user?.uid)!).setValue(["username": self.username.text])
+                    //self.ref.child("users").child((user?.uid)!).setValue(["username": self.username.text])
                     userid = (user?.uid)!
                     
+                    self.ref.child("users").child((user?.uid)!).setValue(["username" : user?.email, "hours" : 0, "this_month":0, "this_week":0, "today":0, "goal" : 0, "weekly" : [0,0,0,0,0,0,0]])
                     
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "nav")
                     self.present(vc!, animated: true, completion: nil)
@@ -193,6 +194,39 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
     }
     
+    func resetPassword(){
+        
+        let alertController = UIAlertController(title: "Email?", message: "Please input your email:", preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
+            
+            if let field = alertController.textFields![0] as? UITextField {
+                // store your data
+                FIRAuth.auth()?.sendPasswordReset(withEmail: field.text!) { (error) in
+                    let okController = UIAlertController(title: "Check your email", message: "A link to reset your password has been sent to your email", preferredStyle: .alert)
+                    let confirm = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                    okController.addAction(confirm)
+                    self.present(okController, animated: true, completion: nil)
+                }
+            } else {
+                // user did not fill field
+            }
+          
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Email"
+        }
+        
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    
+    }
+    
 
     override func viewDidLoad() {
         
@@ -202,6 +236,7 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         ref = FIRDatabase.database().reference()
         //GIDSignIn.sharedInstance().signIn()
         
+        hideKeyboardWhenTappedAround()
         
         
         let btnFrame = CGRect(x: 0, y: 0, width: 270, height: 45)
@@ -238,6 +273,14 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         lbl.textAlignment = .center
         //lbl.backgroundColor = .red
         view.addSubview(lbl)
+        
+        let resetPassBtn = UIButton()
+        resetPassBtn.setTitle("I forgot my password", for: .normal)
+        resetPassBtn.setTitleColor(.black, for: .normal)
+        resetPassBtn.frame = CGRect(x: 0, y: 0, width: view.frame.width-50, height: 30)
+        resetPassBtn.center = CGPoint(x: view.center.x, y: lbl.frame.maxY + 40)
+        resetPassBtn.addTarget(self, action: #selector(resetPassword), for: .touchUpInside)
+        view.addSubview(resetPassBtn)
    
     }
 }

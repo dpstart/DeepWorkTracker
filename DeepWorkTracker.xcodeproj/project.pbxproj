@@ -11,6 +11,9 @@
 		4D14DEE51E64CF3500D916FB /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D14DEE41E64CF3500D916FB /* CustomLabel.swift */; };
 		4D14DEE71E64CF5E00D916FB /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D14DEE61E64CF5E00D916FB /* Button.swift */; };
 		4D14DEE91E64CF9A00D916FB /* TextFIeld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D14DEE81E64CF9A00D916FB /* TextFIeld.swift */; };
+		4D14DEEB1E65B56000D916FB /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D14DEEA1E65B56000D916FB /* StatsViewController.swift */; };
+		4D14DEF11E65B88100D916FB /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D14DEF01E65B88100D916FB /* Charts.framework */; };
+		4D14DEF21E65B88100D916FB /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4D14DEF01E65B88100D916FB /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4D45CC6F1E63816800A78526 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D45CC6E1E63816800A78526 /* GoogleService-Info.plist */; };
 		4DC702C41E637FEE00A8FD8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC702C31E637FEE00A8FD8C /* AppDelegate.swift */; };
 		4DC702C61E637FEE00A8FD8C /* Authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC702C51E637FEE00A8FD8C /* Authenticate.swift */; };
@@ -20,12 +23,28 @@
 		A8D38F105E91E4F8E598179A /* Pods_DeepWorkTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB66067A2D73D6A7614CE2E /* Pods_DeepWorkTracker.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		4D14DEEF1E65B81000D916FB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4D14DEF21E65B88100D916FB /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		13D74669A2834B69D487FD95 /* Pods-DeepWorkTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepWorkTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeepWorkTracker/Pods-DeepWorkTracker.release.xcconfig"; sourceTree = "<group>"; };
 		4D14DEE11E646A8100D916FB /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4D14DEE41E64CF3500D916FB /* CustomLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		4D14DEE61E64CF5E00D916FB /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		4D14DEE81E64CF9A00D916FB /* TextFIeld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFIeld.swift; sourceTree = "<group>"; };
+		4D14DEEA1E65B56000D916FB /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		4D14DEF01E65B88100D916FB /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D45CC6E1E63816800A78526 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4DC702C01E637FED00A8FD8C /* DeepWorkTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepWorkTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC702C31E637FEE00A8FD8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +63,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8D38F105E91E4F8E598179A /* Pods_DeepWorkTracker.framework in Frameworks */,
+				4D14DEF11E65B88100D916FB /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +83,7 @@
 		4DC702B71E637FE600A8FD8C = {
 			isa = PBXGroup;
 			children = (
+				4D14DEF01E65B88100D916FB /* Charts.framework */,
 				4DC702C21E637FED00A8FD8C /* DeepWorkTracker */,
 				4DC702C11E637FED00A8FD8C /* Products */,
 				991E2F677DD2831A6BA40958 /* Pods */,
@@ -85,6 +106,7 @@
 				4DC702C31E637FEE00A8FD8C /* AppDelegate.swift */,
 				4DC702C51E637FEE00A8FD8C /* Authenticate.swift */,
 				4D14DEE11E646A8100D916FB /* MainViewController.swift */,
+				4D14DEEA1E65B56000D916FB /* StatsViewController.swift */,
 				4DC702C71E637FEE00A8FD8C /* Main.storyboard */,
 				4DC702CA1E637FEE00A8FD8C /* Assets.xcassets */,
 				4DC702CC1E637FEE00A8FD8C /* LaunchScreen.storyboard */,
@@ -124,6 +146,7 @@
 				4DC702BE1E637FE700A8FD8C /* Resources */,
 				91D052216C0A386B9EE4E017 /* [CP] Embed Pods Frameworks */,
 				BC2F7123D4B786EA077399B3 /* [CP] Copy Pods Resources */,
+				4D14DEEF1E65B81000D916FB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -240,6 +263,7 @@
 				4D14DEE21E646A8100D916FB /* MainViewController.swift in Sources */,
 				4DC702C61E637FEE00A8FD8C /* Authenticate.swift in Sources */,
 				4D14DEE91E64CF9A00D916FB /* TextFIeld.swift in Sources */,
+				4D14DEEB1E65B56000D916FB /* StatsViewController.swift in Sources */,
 				4DC702C41E637FEE00A8FD8C /* AppDelegate.swift in Sources */,
 				4D14DEE51E64CF3500D916FB /* CustomLabel.swift in Sources */,
 			);
