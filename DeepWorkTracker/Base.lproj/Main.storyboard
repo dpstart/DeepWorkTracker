@@ -49,7 +49,7 @@
         <!--Item 2-->
         <scene sceneID="2JI-Pz-BFd">
             <objects>
-                <viewController id="Ewg-1x-wOE" sceneMemberID="viewController">
+                <viewController id="Ewg-1x-wOE" customClass="StatsViewController" customModule="DeepWorkTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="K3I-ZQ-dhC"/>
                         <viewControllerLayoutGuide type="bottom" id="Xjq-J4-REP"/>
