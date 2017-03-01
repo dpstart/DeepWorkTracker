@@ -34,21 +34,7 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FB
     var password = TextField()
     
     var ref: FIRDatabaseReference!
-    
-    @available(iOS 9.0, *)
-    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any])
-        -> Bool {
-            return GIDSignIn.sharedInstance().handle(url,
-                                                     sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
-                                                     annotation: [:])
-    }
-    
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url,
-                                                 sourceApplication: sourceApplication,
-                                                 annotation: annotation)
-    }
-    
+       
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         // ...
         if let error = error {
@@ -80,6 +66,7 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FB
                     self.ref.child("users").child((user?.uid)!).setValue(["username" : user?.email, "hours" : 0, "this_month":0, "this_week":0, "today":0, "goal" : 0, "weekly" : [0,0,0,0,0,0,0]])
                 }
                 
+                userid = (user?.uid)!
                 
             })
             
@@ -255,7 +242,9 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FB
         }
     }
     
-    public func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!){}
+    public func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!){
+        print("User logged out")
+    }
     
     func getFBUserData() {
         
@@ -271,14 +260,32 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FB
                 print("fetched user: \(result)")
                 guard let res = result as? NSDictionary else { return }
                 guard let email = res.value(forKey: "email") else { return }
-                var handle = FIRAuth.auth()?.addStateDidChangeListener() { (auth, user) in
-                    print("Fetched id:\(user?.uid)")
+                let handle = FIRAuth.auth()?.addStateDidChangeListener() { (auth, user) in
                     
-                    self.ref.child("users").child((user?.uid)!).setValue(["username" : email ?? "", "hours" : 0, "this_month":0, "this_week":0, "today":0, "goal" : 0, "weekly" : [0,0,0,0,0,0,0]])
+                    if(user != nil){
+                        self.ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+                            
+                            if snapshot.hasChild((user?.uid)!){
+                                
+                                print("User already registered")
+                                
+                            }else{
+                                
+                                print("User not registered")
+                                self.ref.child("users").child((user?.uid)!).setValue(["username" : email ?? "", "hours" : 0, "this_month":0, "this_week":0, "today":0, "goal" : 0, "weekly" : [0,0,0,0,0,0,0]])
+                            }
+                            
+                            userid = (user?.uid)!
+                            
+                        })
+                        
+                       /* userid = (user?.uid)!
+                        self.ref.child("users").child((user?.uid)!).setValue(["username" : email ?? "", "hours" : 0, "this_month":0, "this_week":0, "today":0, "goal" : 0, "weekly" : [0,0,0,0,0,0,0]])*/
                     
                     
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "nav")
-                    self.present(vc!, animated: true, completion: nil)
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "nav")
+                        self.present(vc!, animated: true, completion: nil)
+                    }
                 }
                 
                 
@@ -294,10 +301,6 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FB
         GIDSignIn.sharedInstance().uiDelegate = self
 
         ref = FIRDatabase.database().reference()
-        //GIDSignIn.sharedInstance().signIn()
-        
-        //hideKeyboardWhenTappedAround()
-    
         
         let frame = CGRect(x: 0, y: 0, width: 270, height: 45)
         
