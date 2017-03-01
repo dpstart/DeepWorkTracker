@@ -27,7 +27,7 @@ class StatsViewController: UIViewController {
         
         let xAxis = chart.xAxis
         xAxis.drawLabelsEnabled = false
-        xAxis.drawAxisLineEnabled = false
+        //xAxis.drawAxisLineEnabled = false
         xAxis.drawGridLinesEnabled = false
         
         let leftAxis = chart.leftAxis
@@ -43,7 +43,7 @@ class StatsViewController: UIViewController {
         rightAxis.axisLineColor = .white
         rightAxis.axisMinimum = 0.0
         //rightAxis.drawAxisLineEnabled = false
-        //rightAxis.drawGridLinesEnabled = false
+        rightAxis.drawGridLinesEnabled = false
      
     
         
@@ -54,7 +54,6 @@ class StatsViewController: UIViewController {
         var i:Double = 0;
         for elem in workData{
         
-            print(elem)
             let dataEntry = ChartDataEntry(x: i, y: elem)
             dataSet.addEntry(dataEntry)
             i += 1
@@ -62,13 +61,13 @@ class StatsViewController: UIViewController {
        
       
       //  dataSet = LineChartDataSet(values: [dataEntry, dataEntry2], label: "stuff")
-        dataSet.setColor(.red)
-        dataSet.setCircleColor(.red)
+        dataSet.setColor(.white)
+        dataSet.setCircleColor(.white)
         dataSet.drawValuesEnabled = false
         chart.data = LineChartData(dataSets: [dataSet])
         
-        chart.animate(xAxisDuration: 3.0, yAxisDuration: 3.0, easingOption: .easeInSine)
-        chart.backgroundColor = UIColor(red:0/255, green: 150/255, blue: 136/255, alpha:0.5)
+        chart.animate(xAxisDuration: 1.0, yAxisDuration: 1.0, easingOption: .easeInSine)
+        chart.backgroundColor = UIColor(red: 76/255, green: 175/255, blue: 80/255, alpha: 1)
         
         
     }
@@ -76,7 +75,18 @@ class StatsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
  
-        chart.frame = CGRect(x: 0, y: 0, width: view.frame.width-40, height: 300)
+        let backgroundView = UIImageView()
+        backgroundView.frame = view.frame
+        backgroundView.image = #imageLiteral(resourceName: "login-background")
+        view.addSubview(backgroundView)
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = backgroundView.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        backgroundView.addSubview(blurEffectView)
+        
+        chart.frame = CGRect(x: 0, y: 0, width: view.frame.width-40, height: 250)
         chart.center = CGPoint(x: view.center.x, y: view.center.y)
         view.addSubview(chart)
         

@@ -18,6 +18,7 @@
 		4D14DEF81E65E6CC00D916FB /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D14DEF51E65E6CC00D916FB /* FBSDKCoreKit.framework */; };
 		4D14DEF91E65E6CC00D916FB /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D14DEF61E65E6CC00D916FB /* FBSDKLoginKit.framework */; };
 		4D14DEFC1E6710A900D916FB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D14DEFB1E6710A900D916FB /* SettingsViewController.swift */; };
+		4D14DEFE1E67230F00D916FB /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D14DEFD1E67230F00D916FB /* TabBarViewController.swift */; };
 		4D45CC6F1E63816800A78526 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D45CC6E1E63816800A78526 /* GoogleService-Info.plist */; };
 		4DC702C41E637FEE00A8FD8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC702C31E637FEE00A8FD8C /* AppDelegate.swift */; };
 		4DC702C61E637FEE00A8FD8C /* Authenticate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC702C51E637FEE00A8FD8C /* Authenticate.swift */; };
@@ -54,6 +55,7 @@
 		4D14DEF61E65E6CC00D916FB /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../Documents/FacebookSDKs-iOS-4.19.0/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		4D14DEFA1E65E84400D916FB /* bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bridging-header.h"; sourceTree = "<group>"; };
 		4D14DEFB1E6710A900D916FB /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		4D14DEFD1E67230F00D916FB /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		4D45CC6E1E63816800A78526 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4DC702C01E637FED00A8FD8C /* DeepWorkTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepWorkTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC702C31E637FEE00A8FD8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				4DC702C31E637FEE00A8FD8C /* AppDelegate.swift */,
 				4DC702C51E637FEE00A8FD8C /* Authenticate.swift */,
 				4D14DEE11E646A8100D916FB /* MainViewController.swift */,
+				4D14DEFD1E67230F00D916FB /* TabBarViewController.swift */,
 				4D14DEEA1E65B56000D916FB /* StatsViewController.swift */,
 				4D14DEFB1E6710A900D916FB /* SettingsViewController.swift */,
 				4DC702C71E637FEE00A8FD8C /* Main.storyboard */,
@@ -280,6 +283,7 @@
 				4D14DEE21E646A8100D916FB /* MainViewController.swift in Sources */,
 				4DC702C61E637FEE00A8FD8C /* Authenticate.swift in Sources */,
 				4D14DEE91E64CF9A00D916FB /* TextFIeld.swift in Sources */,
+				4D14DEFE1E67230F00D916FB /* TabBarViewController.swift in Sources */,
 				4D14DEEB1E65B56000D916FB /* StatsViewController.swift in Sources */,
 				4DC702C41E637FEE00A8FD8C /* AppDelegate.swift in Sources */,
 				4D14DEE51E64CF3500D916FB /* CustomLabel.swift in Sources */,

@@ -84,7 +84,7 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FB
     
     
     func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
-                withError error: NSError!) {
+                withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
         // ...
     }
@@ -272,7 +272,7 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FB
                             }else{
                                 
                                 print("User not registered")
-                                self.ref.child("users").child((user?.uid)!).setValue(["username" : email ?? "", "hours" : 0, "this_month":0, "this_week":0, "today":0, "goal" : 0, "weekly" : [0,0,0,0,0,0,0]])
+                                self.ref.child("users").child((user?.uid)!).setValue(["username" : email , "hours" : 0, "this_month":0, "this_week":0, "today":0, "goal" : 0, "weekly" : [0,0,0,0,0,0,0]])
                             }
                             
                             userid = (user?.uid)!
@@ -302,13 +302,46 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FB
 
         ref = FIRDatabase.database().reference()
         
+        let backgroundView = UIImageView()
+        backgroundView.frame = view.frame
+        backgroundView.image = #imageLiteral(resourceName: "login-background")
+        view.addSubview(backgroundView)
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = backgroundView.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        backgroundView.addSubview(blurEffectView)
+        
+        
         let frame = CGRect(x: 0, y: 0, width: 270, height: 45)
         
+        var usernamePlaceholder = NSMutableAttributedString()
+        let usernamePlaceholderText  = "Username"
+        
+        // Set the Font
+        usernamePlaceholder = NSMutableAttributedString(string:usernamePlaceholderText, attributes: [NSFontAttributeName:UIFont(name: "Helvetica", size: 15.0)!])
+        
+        // Set the color
+        usernamePlaceholder.addAttribute(NSForegroundColorAttributeName, value: UIColor.lightGray, range:NSRange(location:0,length: usernamePlaceholderText.characters.count))
+        
+        
         username = TextField(frame: frame)
+        username.attributedPlaceholder = usernamePlaceholder
         view.addSubview(username)
         username.center = CGPoint(x: self.view.center.x , y: view.center.y - view.frame.height/5)
         
+        var passwordPlaceholder = NSMutableAttributedString()
+        let passwordPlaceholderText  = "Password"
+        
+        // Set the Font
+        passwordPlaceholder = NSMutableAttributedString(string:passwordPlaceholderText, attributes: [NSFontAttributeName:UIFont(name: "Helvetica", size: 15.0)!])
+        
+        // Set the color
+        passwordPlaceholder.addAttribute(NSForegroundColorAttributeName, value: UIColor.lightGray, range:NSRange(location:0,length: passwordPlaceholderText.characters.count))
+        
         password = TextField(frame: frame)
+        password.attributedPlaceholder = passwordPlaceholder
         view.addSubview(password)
         password.isSecureTextEntry = true
         
@@ -326,7 +359,7 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FB
         noticeLbl.lineBreakMode = .byWordWrapping
         noticeLbl.numberOfLines = 0
         noticeLbl.font = UIFont.systemFont(ofSize: 13)
-        noticeLbl.textColor = .red
+        noticeLbl.textColor = .white
         noticeLbl.textAlignment = .center
         view.addSubview(noticeLbl)
         
@@ -334,7 +367,7 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FB
         
         let resetPassBtn = UIButton()
         resetPassBtn.setTitle("I forgot my password", for: .normal)
-        resetPassBtn.setTitleColor(.black, for: .normal)
+        resetPassBtn.setTitleColor(.white, for: .normal)
         resetPassBtn.frame = CGRect(x: 0, y: 0, width: view.frame.width-50, height: 30)
         resetPassBtn.addTarget(self, action: #selector(resetPassword), for: .touchUpInside)
         view.addSubview(resetPassBtn)

@@ -33,44 +33,88 @@ class MainViewController: UIViewController {
     
     struct stats {
         
-        var hours:Int?
-        var monthly:Int?
-        var weekly:Int?
-        var daily:Int?
-        var goal:Int?
+        var hours:Float?
+        var monthly:Float?
+        var weekly:Float?
+        var daily:Float?
+        var goal:Float?
     }
  
     var statistics:stats?
     
+    func readCurrentDay( completionHandler: @escaping (Int) -> ()){
+        
+        //Reads current week day from database
+        ref.child("data").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            let currentDayInt = value?["current_day"] as? Int ?? 0
+            
+            let currentDay = "\(currentDayInt)"
+            
+            completionHandler(currentDayInt)
+            // ...
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    
+    }
+    
     func add30Minutes(){
         
-        self.ref.child("users").child(userid).runTransactionBlock({ (currentData: FIRMutableData) -> FIRTransactionResult in
-            // Set value and report transaction success
-            var data = currentData.value as? [String : Any] ?? [:]
+        readCurrentDay { (currentDay) in
             
-            var today = data["today"] as? Int ?? 0
-            var week =  data["this_week"] as? Int ?? 0
-            var month = data["this_month"] as? Int ?? 0
-            var tot = data["hours"] as? Int ?? 0
             
-            today += 1
-            week += 1
-            month += 1
-            tot += 1
-            
-            data["today"] = today as Any?
-            data["this_week"] = week as Any?
-            data["this_month"] = month as Any?
-            data["hours"] = tot as Any?
-            
-            currentData.value = data
-            
-            return FIRTransactionResult.success(withValue: currentData)
-        }) { (error, committed, snapshot) in
-            if let error = error {
-                print(error.localizedDescription)
+            self.ref.child("users").child(userid).runTransactionBlock({ (currentData: FIRMutableData) -> FIRTransactionResult in
+                // Set value and report transaction success
+                
+                
+                var data = currentData.value as? [String : Any] ?? [:]
+                
+                var today = data["today"] as? Float ?? 0
+                var week =  data["this_week"] as? Float ?? 0
+                var month = data["this_month"] as? Float ?? 0
+                var tot = data["hours"] as? Float ?? 0
+                
+                var weekDays = data["weekly"] as? [Float] ?? []
+                var todayValue = weekDays[currentDay]
+                todayValue += 1
+                weekDays[currentDay] = todayValue
+                
+                print(weekDays)
+                
+               /* if var value = todayValue{
+                    value += 0.5
+                    weekDays[currentDay] = value
+                    
+                    print("Weekdays: \(weekDays)")
+                }*/
+                
+                
+                
+                today += 0.5
+                week += 0.5
+                month += 0.5
+                tot += 0.5
+                
+                data["today"] = today as Any?
+                data["this_week"] = week as Any?
+                data["this_month"] = month as Any?
+                data["hours"] = tot as Any?
+                data["weekly"] = weekDays as [Any]
+                
+                currentData.value = data
+                
+                return FIRTransactionResult.success(withValue: currentData)
+            }) { (error, committed, snapshot) in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
             }
+            
         }
+        
+       
     }
     
     func showUI(){
@@ -84,12 +128,18 @@ class MainViewController: UIViewController {
         
             let backgroundImageView = UIImageView()
             backgroundImageView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height/2 + view.frame.height/5)
-            backgroundImageView.image = #imageLiteral(resourceName: "background")
+            backgroundImageView.image = #imageLiteral(resourceName: "login-background")
             backgroundImageView.layer.shadowColor = UIColor.black.cgColor
             backgroundImageView.layer.shadowOpacity = 1
             backgroundImageView.layer.shadowOffset = CGSize.zero
             backgroundImageView.layer.shadowRadius = 10
             view.addSubview(backgroundImageView)
+            
+            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            blurEffectView.frame = backgroundImageView.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            backgroundImageView.addSubview(blurEffectView)
             
             let totHoursFrame = CGRect(x: 0, y: 0, width: 100, height: 35)
             totHoursLabel = CustomLabel(frame: totHoursFrame, color: UIColor(red:0/255, green: 150/255, blue: 136/255, alpha:1), text: "TOTAL")
@@ -108,28 +158,32 @@ class MainViewController: UIViewController {
             weeklyHoursLabel.anchor(monthlyHoursLabel.bottomAnchor, left: monthlyHoursLabel.leftAnchor, bottom: nil, right: nil, topConstant: 20, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: weeklyHoursLabel.frame.width, heightConstant: weeklyHoursLabel.frame.height)
             
             let dailyHoursFrame = CGRect(x: 0, y: 0, width: 170, height: 50)
-            let dailyHoursLabel = CustomLabel(frame: dailyHoursFrame, color: UIColor.green, text: "TODAY")
+            let dailyHoursLabel = CustomLabel(frame: dailyHoursFrame, color: UIColor(red: 76/255, green: 175/255, blue: 80/255, alpha: 1), text: "TODAY")
             backgroundImageView.addSubview(dailyHoursLabel)
             dailyHoursLabel.anchor(weeklyHoursLabel.bottomAnchor, left: weeklyHoursLabel.leftAnchor, bottom: nil, right: nil, topConstant: 38, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: dailyHoursLabel.frame.width, heightConstant: dailyHoursLabel.frame.height)
             
             
             totalNumber = UILabel()
             totalNumber.font = UIFont.boldSystemFont(ofSize: 20)
+            totalNumber.textColor = .white
             backgroundImageView.addSubview(totalNumber)
             totalNumber.anchor(totHoursLabel.topAnchor, left: totHoursLabel.rightAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 20, bottomConstant: 0, rightConstant: 0, widthConstant: 50, heightConstant: 30)
             
             monthlyNumber = UILabel()
             monthlyNumber.font = UIFont.boldSystemFont(ofSize: 20)
+            monthlyNumber.textColor = .white
             backgroundImageView.addSubview(monthlyNumber)
             monthlyNumber.anchor(monthlyHoursLabel.topAnchor, left: monthlyHoursLabel.rightAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 20, bottomConstant: 0, rightConstant: 0, widthConstant: 50, heightConstant: 30)
             
             weeklyNumber = UILabel()
             weeklyNumber.font =  UIFont.boldSystemFont(ofSize: 20)
+            weeklyNumber.textColor = .white
             backgroundImageView.addSubview(weeklyNumber)
             weeklyNumber.anchor(weeklyHoursLabel.topAnchor, left: weeklyHoursLabel.rightAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 20, bottomConstant: 0, rightConstant: 0, widthConstant: 50, heightConstant: 30)
             
             dailyNumber = UILabel()
             dailyNumber.font = UIFont.boldSystemFont(ofSize: 22)
+            dailyNumber.textColor = .white
             backgroundImageView.addSubview(dailyNumber)
             dailyNumber.anchor(dailyHoursLabel.topAnchor, left: dailyHoursLabel.rightAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: 50, heightConstant: 50)
             
@@ -144,7 +198,7 @@ class MainViewController: UIViewController {
             //add30.center = CGPoint(x: view.center.x, y: progView.frame.maxY + 50)
             
             add30.setTitle("+30 minutes", for: .normal)
-            add30.backgroundColor = .green
+            add30.backgroundColor = UIColor(red: 76/255, green: 175/255, blue: 80/255, alpha: 1)
             add30.addTarget(self, action: #selector(add30Minutes), for: .touchUpInside)
             
             view.addSubview(add30)
@@ -164,11 +218,11 @@ class MainViewController: UIViewController {
             // Get user value
             let value = snapshot.value as? NSDictionary
             //let username = value?["username"] as? String ?? ""
-            let hours = value?["hours"] as? Int ?? 0
-            let monthly = value?["this_month"] as? Int ?? 0
-            let weekly = value?["this_week"] as? Int ?? 0
-            let daily = value?["today"] as? Int ?? 0
-            let goal = value?["goal"] as? Int ?? 0
+            let hours = value?["hours"] as? Float ?? 0
+            let monthly = value?["this_month"] as? Float ?? 0
+            let weekly = value?["this_week"] as? Float ?? 0
+            let daily = value?["today"] as? Float ?? 0
+            let goal = value?["goal"] as? Float ?? 0
             
             self.statistics = stats(hours: hours, monthly: monthly, weekly: weekly, daily: daily, goal: goal)
             

@@ -14,11 +14,12 @@ class TextField: UITextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        layer.borderColor = UIColor.red.cgColor
+        layer.borderColor = UIColor.white.cgColor
         layer.borderWidth = 1
         layer.cornerRadius = frame.height / 2
         layer.masksToBounds = true
         font = UIFont.systemFont(ofSize: 13)
+        textColor = .white
         
     }
     

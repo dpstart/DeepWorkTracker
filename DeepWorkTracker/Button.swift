@@ -15,8 +15,8 @@ class Button : UIButton {
         super.init(frame: frame)
         
         setTitle(text, for: .normal)
-        setTitleColor(UIColor.red, for: .normal)
-        layer.borderColor = UIColor.red.cgColor
+        setTitleColor(UIColor.white, for: .normal)
+        layer.borderColor = UIColor.white.cgColor
         layer.borderWidth = 1
         layer.cornerRadius = frame.height / 2
         layer.masksToBounds = true

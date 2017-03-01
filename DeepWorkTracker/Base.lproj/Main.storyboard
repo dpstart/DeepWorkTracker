@@ -94,10 +94,10 @@
             </objects>
             <point key="canvasLocation" x="311" y="-187"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="ljZ-96-QqJ">
             <objects>
-                <tabBarController storyboardIdentifier="nav" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xWh-Ul-QIj" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="nav" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xWh-Ul-QIj" customClass="TabBarViewController" customModule="DeepWorkTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="bWu-ij-cv1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
