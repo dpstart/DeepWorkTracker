@@ -46,13 +46,16 @@ class MainViewController: UIViewController {
         backgroundView.backgroundColor =  UIColor(red: 207/255, green: 216/255, blue: 220/255, alpha: 0.5)
         view.addSubview(backgroundView)
         
-        let totHoursFrame = CGRect(x: 20, y: 40, width: 100, height: 35)
+        let totHoursFrame = CGRect(x: 0, y: 0, width: 100, height: 35)
         totHoursLabel = CustomLabel(frame: totHoursFrame, color: UIColor(red:0/255, green: 150/255, blue: 136/255, alpha:1), text: "TOTAL")
         backgroundView.addSubview(totHoursLabel)
         
-        let monthlyHoursFrame = CGRect(x: 20, y: totHoursLabel.frame.maxY+20, width: 100, height: 35)
+        totHoursLabel.anchor(view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, topConstant: 40, leftConstant: 20, bottomConstant: 0, rightConstant: 0, widthConstant: totHoursFrame.width, heightConstant: totHoursFrame.height)
+        
+        let monthlyHoursFrame = CGRect(x: 0, y: 0, width: 100, height: 35)
         monthlyHoursLabel = CustomLabel(frame: monthlyHoursFrame, color: UIColor(red:0/255, green: 150/255, blue: 136/255, alpha:1), text: "MONTHLY")
         backgroundView.addSubview(monthlyHoursLabel)
+        monthlyHoursLabel.anchor(totHoursLabel.bottomAnchor, left: totHoursLabel.leftAnchor, bottom: nil, right: nil, topConstant: 20, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: monthlyHoursFrame.width, heightConstant: monthlyHoursFrame.height)
         
         let weeklyHoursFrame = CGRect(x: 20, y: monthlyHoursLabel.frame.maxY+20, width: 100, height: 35)
         weeklyHoursLabel = CustomLabel(frame: weeklyHoursFrame, color: UIColor(red:0/255, green: 150/255, blue: 136/255, alpha:1), text: "WEEKLY")
@@ -64,10 +67,11 @@ class MainViewController: UIViewController {
         
         
         let totalNumber = UILabel()
-        totalNumber.frame = CGRect(x: totHoursLabel.frame.maxX + 20, y: totHoursLabel.frame.minY, width: 50, height: 30)
+        //totalNumber.frame = CGRect(x: totHoursLabel.frame.maxX + 20, y: totHoursLabel.frame.minY, width: 50, height: 30)
         totalNumber.text = String(self.statistics!.hours!)
         totalNumber.font = UIFont.boldSystemFont(ofSize: 20)
         backgroundView.addSubview(totalNumber)
+        totalNumber.anchor(totHoursLabel.topAnchor, left: totHoursLabel.rightAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 20, bottomConstant: 0, rightConstant: 0, widthConstant: 50, heightConstant: 30)
         
         let monthlyNumber = UILabel()
         monthlyNumber.frame = CGRect(x: monthlyHoursLabel.frame.maxX + 20, y: monthlyHoursLabel.frame.minY, width: 50, height: 30)

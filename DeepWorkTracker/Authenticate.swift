@@ -250,13 +250,8 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FB
             
             self.getFBUserData()
             
-            print(user?.email)
           
-            self.ref.child("users").child((user?.uid)!).setValue(["username" : user?.email ?? "", "hours" : 0, "this_month":0, "this_week":0, "today":0, "goal" : 0, "weekly" : [0,0,0,0,0,0,0]])
             
-            
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "nav")
-            self.present(vc!, animated: true, completion: nil)
         }
     }
     
@@ -274,6 +269,18 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FB
             else
             {
                 print("fetched user: \(result)")
+                guard let res = result as? NSDictionary else { return }
+                guard let email = res.value(forKey: "email") else { return }
+                var handle = FIRAuth.auth()?.addStateDidChangeListener() { (auth, user) in
+                    print("Fetched id:\(user?.uid)")
+                    
+                    self.ref.child("users").child((user?.uid)!).setValue(["username" : email ?? "", "hours" : 0, "this_month":0, "this_week":0, "today":0, "goal" : 0, "weekly" : [0,0,0,0,0,0,0]])
+                    
+                    
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "nav")
+                    self.present(vc!, animated: true, completion: nil)
+                }
+                
                 
             }
         })
