@@ -50,8 +50,6 @@ class MainViewController: UIViewController {
             let value = snapshot.value as? NSDictionary
             let currentDayInt = value?["current_day"] as? Int ?? 0
             
-            let currentDay = "\(currentDayInt)"
-            
             completionHandler(currentDayInt)
             // ...
         }) { (error) in
@@ -210,6 +208,11 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        if isNewUser == true {
+            print("NEW USER!")
+        }
         
         ref = FIRDatabase.database().reference()
         

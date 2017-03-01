@@ -63,6 +63,7 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FB
                 }else{
                     
                     print("User not registered")
+                    isNewUser = true
                     self.ref.child("users").child((user?.uid)!).setValue(["username" : user?.email, "hours" : 0, "this_month":0, "this_week":0, "today":0, "goal" : 0, "weekly" : [0,0,0,0,0,0,0]])
                 }
                 
@@ -272,6 +273,7 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FB
                             }else{
                                 
                                 print("User not registered")
+                                isNewUser = true
                                 self.ref.child("users").child((user?.uid)!).setValue(["username" : email , "hours" : 0, "this_month":0, "this_week":0, "today":0, "goal" : 0, "weekly" : [0,0,0,0,0,0,0]])
                             }
                             

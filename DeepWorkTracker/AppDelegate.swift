@@ -12,6 +12,7 @@ import GoogleSignIn
 
 var Username:String = ""
 var userid = ""
+var isNewUser = false
 
 
 @UIApplicationMain
