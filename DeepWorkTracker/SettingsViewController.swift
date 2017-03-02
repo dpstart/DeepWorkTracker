@@ -60,10 +60,15 @@ class SettingsViewController: UITableViewController {
             cell.textLabel?.text = "Set goal"
         }
         
-        if indexPath.row == 1 && indexPath.section == 1 {
+        if indexPath.row == 0 && indexPath.section == 1 {
         
             cell.textLabel?.text = "Log out"
             
+        }
+        
+        if indexPath.row == 1 && indexPath.section == 1 {
+            
+            cell.textLabel?.text = "Delete account"
         }
         
         cell.selectionStyle = .none
@@ -73,7 +78,7 @@ class SettingsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.row == 1 && indexPath.section == 1 {
+        if indexPath.row == 0 && indexPath.section == 1 {
         
             let firebaseAuth = FIRAuth.auth()
             do {
@@ -89,6 +94,23 @@ class SettingsViewController: UITableViewController {
             UIApplication.shared.keyWindow?.rootViewController = loginView
         }
         
+        if indexPath.row == 1 && indexPath.section == 1 {
+        
+            let user = FIRAuth.auth()?.currentUser
+            
+            user?.delete { error in
+                if let error = error {
+                    // An error happened.
+                } else {
+                    // Account deleted.
+                    print("Account deleted")
+                    // TODO: require confirmation
+                    // TODO : remove database entry
+                }
+            }
+        
+        }
+        
         if indexPath.row == 0 && indexPath.section == 0 {
             
             //REQUEST AND CHANGE GOAL FOR CURRENT USER
@@ -98,6 +120,7 @@ class SettingsViewController: UITableViewController {
                 
             })
         }
+        
     }
     
     func requestGoalValue(completionHandler:@escaping (Float) -> ()){
