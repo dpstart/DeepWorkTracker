@@ -9,11 +9,19 @@
 import UIKit
 import FirebaseAuth
 import FBSDKLoginKit
+import FirebaseDatabase
+
 
 class SettingsViewController: UITableViewController {
+    
+    var ref: FIRDatabaseReference!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ref = FIRDatabase.database().reference()
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -47,31 +55,100 @@ class SettingsViewController: UITableViewController {
         // Configure the cell...
         let cell = UITableViewCell()
         
+        if indexPath.row == 0 && indexPath.section == 0 {
+            
+            cell.textLabel?.text = "Set goal"
+        }
+        
         if indexPath.row == 1 && indexPath.section == 1 {
         
             cell.textLabel?.text = "Log out"
             
         }
+        
+        cell.selectionStyle = .none
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let firebaseAuth = FIRAuth.auth()
-        do {
-            try firebaseAuth?.signOut()
-
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
+        if indexPath.row == 1 && indexPath.section == 1 {
+        
+            let firebaseAuth = FIRAuth.auth()
+            do {
+                try firebaseAuth?.signOut()
+                
+            } catch let signOutError as NSError {
+                print ("Error signing out: %@", signOutError)
+            }
+            
+            FBSDKLoginManager().logOut()
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let loginView: Authenticate = storyboard.instantiateViewController(withIdentifier: "AUTH") as! Authenticate
+            UIApplication.shared.keyWindow?.rootViewController = loginView
         }
         
-        FBSDKLoginManager().logOut()
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let loginView: Authenticate = storyboard.instantiateViewController(withIdentifier: "AUTH") as! Authenticate
-        UIApplication.shared.keyWindow?.rootViewController = loginView
+        if indexPath.row == 0 && indexPath.section == 0 {
+            
+            //REQUEST AND CHANGE GOAL FOR CURRENT USER
+            requestGoalValue(completionHandler: { (goal) in
+                
+                self.changeGoal(goal: goal)
+                
+            })
+        }
     }
     
+    func requestGoalValue(completionHandler:@escaping (Float) -> ()){
+    
+        ref.child("users").child(userid).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            let goal = value?["goal"] as? Float ?? 0
+           
+            completionHandler(goal)
+            
+            // ...
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    
+    }
+    
+    func changeGoal(goal:Float){
+        
+        let alertController = UIAlertController(title: "Set your new goal", message: "Set a new value for your goal", preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
+            
+            if let field = alertController.textFields![0] as? UITextField {
+                // store your data
+                
+                let NSStringValue = field.text! as NSString
+                let floatValue = NSStringValue.floatValue
+                
+                self.ref.child("users").child(userid).child("goal").setValue(floatValue)
+                
+            } else {
+                // user did not fill field
+            }
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        
+        alertController.addTextField { (textField) in
+            textField.placeholder = "goal"
+        }
+        
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+
+    
+    }
 
     /*
     // Override to support conditional editing of the table view.
