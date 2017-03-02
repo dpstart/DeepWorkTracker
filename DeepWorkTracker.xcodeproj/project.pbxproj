@@ -129,12 +129,12 @@
 				4D14DEFD1E67230F00D916FB /* TabBarViewController.swift */,
 				4D14DEEA1E65B56000D916FB /* StatsViewController.swift */,
 				4D14DEFB1E6710A900D916FB /* SettingsViewController.swift */,
+				4D14DEFA1E65E84400D916FB /* bridging-header.h */,
 				4DC702C71E637FEE00A8FD8C /* Main.storyboard */,
 				4DC702CA1E637FEE00A8FD8C /* Assets.xcassets */,
 				4DC702CC1E637FEE00A8FD8C /* LaunchScreen.storyboard */,
 				4DC702CF1E637FEE00A8FD8C /* Info.plist */,
 				4D45CC6E1E63816800A78526 /* GoogleService-Info.plist */,
-				4D14DEFA1E65E84400D916FB /* bridging-header.h */,
 			);
 			path = DeepWorkTracker;
 			sourceTree = "<group>";
