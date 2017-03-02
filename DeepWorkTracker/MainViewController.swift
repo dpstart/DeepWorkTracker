@@ -30,6 +30,7 @@ class MainViewController: UIViewController {
     var monthlyNumber = UILabel()
     var weeklyNumber = UILabel()
     var dailyNumber = UILabel()
+    var progView = UIProgressView()
     
     struct stats {
         
@@ -185,7 +186,7 @@ class MainViewController: UIViewController {
             backgroundImageView.addSubview(dailyNumber)
             dailyNumber.anchor(dailyHoursLabel.topAnchor, left: dailyHoursLabel.rightAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: 50, heightConstant: 50)
             
-            let progView = UIProgressView()
+            //progView = UIProgressView()
             //progView.frame = CGRect(x: 20, y: view.frame.maxY - self.view.frame.height/4 - 20, width:view.frame.width - 40 , height: 20)
             progView.progressTintColor = UIColor(red:0/255, green: 150/255, blue: 136/255, alpha:1)
             backgroundImageView.addSubview(progView)
@@ -227,10 +228,9 @@ class MainViewController: UIViewController {
             let daily = value?["today"] as? Float ?? 0
             let goal = value?["goal"] as? Float ?? 0
             
+            print("Goal : \(goal), today : \(daily)")
+            
             self.statistics = stats(hours: hours, monthly: monthly, weekly: weekly, daily: daily, goal: goal)
-            
-            
-            // ...
             
             self.showUI()
             self.showed = true
@@ -238,6 +238,7 @@ class MainViewController: UIViewController {
             self.monthlyNumber.text = String(self.statistics!.monthly!)
             self.weeklyNumber.text = String(self.statistics!.weekly!)
             self.dailyNumber.text = String(self.statistics!.daily!)
+            self.progView.progress = Float(self.statistics!.daily!) / Float(self.statistics!.goal!)
         })
         
         
