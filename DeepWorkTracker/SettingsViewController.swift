@@ -89,25 +89,39 @@ class SettingsViewController: UITableViewController {
             }
             
             FBSDKLoginManager().logOut()
-            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            let loginView: Authenticate = storyboard.instantiateViewController(withIdentifier: "AUTH") as! Authenticate
-            UIApplication.shared.keyWindow?.rootViewController = loginView
+            goToAuthenticationViewController()
         }
         
         if indexPath.row == 1 && indexPath.section == 1 {
         
             let user = FIRAuth.auth()?.currentUser
             
-            user?.delete { error in
-                if let error = error {
-                    // An error happened.
-                } else {
-                    // Account deleted.
-                    print("Account deleted")
-                    // TODO: require confirmation
-                    // TODO : remove database entry
+            showAlertController(title: "Are you sure?", message: "This action is permanent", action: {
+                
+                self.ref.child("users").child((user?.uid)!).removeValue(completionBlock: { (error, reference) in
+                    if error != nil{
+                    
+                        print(error)
+                    }else{
+                        
+                        print("Successfully removed user")
+                        print(reference)
+                    
+                    }
+                })
+                
+                user?.delete { error in
+                    if let error = error {
+                        // An error happened.
+                    } else {
+                        // Account deleted.
+                        print("Account deleted")
+                        self.goToAuthenticationViewController()
+                    }
                 }
-            }
+            })
+            
+            
         
         }
         
@@ -121,6 +135,34 @@ class SettingsViewController: UITableViewController {
             })
         }
         
+    }
+    
+    func showAlertController(title:String, message: String, action: @escaping () -> ()){
+        
+        let alertController = UIAlertController(title: title, message:message, preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
+            
+            action()
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        
+        
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    
+    
+    }
+    
+    func goToAuthenticationViewController(){
+    
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let loginView: Authenticate = storyboard.instantiateViewController(withIdentifier: "AUTH") as! Authenticate
+        UIApplication.shared.keyWindow?.rootViewController = loginView
     }
     
     func requestGoalValue(completionHandler:@escaping (Float) -> ()){

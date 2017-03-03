@@ -27,7 +27,7 @@ extension UIViewController {
     }
 }
 
-class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FBSDKLoginButtonDelegate {
+class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FBSDKLoginButtonDelegate, UITextFieldDelegate{
     
     
     var username = TextField()
@@ -197,6 +197,8 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FB
         username.attributedPlaceholder = usernamePlaceholder
         view.addSubview(username)
         username.center = CGPoint(x: self.view.center.x , y: view.center.y - view.frame.height/5)
+        username.delegate = self
+        username.returnKeyType = UIReturnKeyType.done
         
         var passwordPlaceholder = NSMutableAttributedString()
         let passwordPlaceholderText  = "Password"
@@ -211,6 +213,8 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FB
         password.attributedPlaceholder = passwordPlaceholder
         view.addSubview(password)
         password.isSecureTextEntry = true
+        password.delegate = self
+        password.returnKeyType = .done
         
         password.anchor(username.bottomAnchor, left: username.leftAnchor, bottom: nil, right: nil, topConstant: 10, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: password.frame.width, heightConstant: password.frame.height)
 
@@ -253,6 +257,11 @@ class Authenticate: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FB
 
         view.addSubview(FBLoginButton)
         FBLoginButton.anchor(googleAuth.bottomAnchor, left: googleAuth.leftAnchor, bottom: nil, right: nil, topConstant: 10, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: googleAuth.frame.width, heightConstant: 100)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        authenticate()
+        return true
     }
 }
 
