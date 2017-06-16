@@ -5,9 +5,6 @@
       location = "group:DeepWorkTracker.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../Downloads/Charts-master/Charts.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

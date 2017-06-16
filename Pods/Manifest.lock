@@ -1,4 +1,7 @@
 PODS:
+  - Charts (3.0.0):
+    - Charts/Core (= 3.0.0)
+  - Charts/Core (3.0.0)
   - Firebase/Auth (3.8.0):
     - Firebase/Core
     - FirebaseAuth (= 3.0.6)
@@ -54,6 +57,7 @@ PODS:
   - LBTAComponents (0.1.9)
 
 DEPENDENCIES:
+  - Charts
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -70,6 +74,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/bhlvoong/LBTAComponents
 
 SPEC CHECKSUMS:
+  Charts: beb341928d2135613b4325a6c6aff9f2f6de895e
   Firebase: fdbecadb7b5cbef2774852d4fa659b9daf11f2af
   FirebaseAnalytics: 6e58fc9b397664369ac7617fb0ba93fab6ba7b5b
   FirebaseAuth: 96e9674ff31d6e1f826d53e26aa003a57cab0295
@@ -85,6 +90,6 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
   LBTAComponents: ba294d8c2190b14ad8318c56d956c251638a5840
 
-PODFILE CHECKSUM: d66e2116d25b0fa5d6f63ae4b78ced768dbf04ce
+PODFILE CHECKSUM: 41667392a60080567e41a3217d0f5436cabd3783
 
 COCOAPODS: 1.1.1

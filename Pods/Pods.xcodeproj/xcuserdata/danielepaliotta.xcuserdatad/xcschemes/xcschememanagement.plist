@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Charts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GTMOAuth2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,12 +47,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4CD02A8238178DCCE553E75E3B64F69B</key>
+		<key>64EFF154CBF3E077C7E71876A151EBBB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>681BE6E3D02A43F9BA63777AC435C8FD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>70E4962DC738D093E46AE5DA44642B1A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

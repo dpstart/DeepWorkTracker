@@ -11,6 +11,7 @@ target 'DeepWorkTracker' do
 	pod 'Firebase/Database'
 	pod 'GoogleSignIn'
 	pod 'LBTAComponents',  :git => 'https://github.com/bhlvoong/LBTAComponents'
+    pod 'Charts'
   # Pods for DeepWorkTracker
 
 end

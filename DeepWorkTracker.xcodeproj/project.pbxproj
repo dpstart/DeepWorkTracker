@@ -12,8 +12,6 @@
 		4D14DEE71E64CF5E00D916FB /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D14DEE61E64CF5E00D916FB /* Button.swift */; };
 		4D14DEE91E64CF9A00D916FB /* TextFIeld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D14DEE81E64CF9A00D916FB /* TextFIeld.swift */; };
 		4D14DEEB1E65B56000D916FB /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D14DEEA1E65B56000D916FB /* StatsViewController.swift */; };
-		4D14DEF11E65B88100D916FB /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D14DEF01E65B88100D916FB /* Charts.framework */; };
-		4D14DEF21E65B88100D916FB /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4D14DEF01E65B88100D916FB /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4D14DEF71E65E6CC00D916FB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D14DEF41E65E6CC00D916FB /* Bolts.framework */; };
 		4D14DEF81E65E6CC00D916FB /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D14DEF51E65E6CC00D916FB /* FBSDKCoreKit.framework */; };
 		4D14DEF91E65E6CC00D916FB /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D14DEF61E65E6CC00D916FB /* FBSDKLoginKit.framework */; };
@@ -37,7 +35,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4D14DEF21E65B88100D916FB /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,7 +48,6 @@
 		4D14DEE61E64CF5E00D916FB /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		4D14DEE81E64CF9A00D916FB /* TextFIeld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFIeld.swift; sourceTree = "<group>"; };
 		4D14DEEA1E65B56000D916FB /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
-		4D14DEF01E65B88100D916FB /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D14DEF41E65E6CC00D916FB /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../Documents/FacebookSDKs-iOS-4.19.0/Bolts.framework"; sourceTree = "<group>"; };
 		4D14DEF51E65E6CC00D916FB /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../Documents/FacebookSDKs-iOS-4.19.0/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		4D14DEF61E65E6CC00D916FB /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../Documents/FacebookSDKs-iOS-4.19.0/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
@@ -81,7 +77,6 @@
 				4D14DEF81E65E6CC00D916FB /* FBSDKCoreKit.framework in Frameworks */,
 				4D14DEF91E65E6CC00D916FB /* FBSDKLoginKit.framework in Frameworks */,
 				A8D38F105E91E4F8E598179A /* Pods_DeepWorkTracker.framework in Frameworks */,
-				4D14DEF11E65B88100D916FB /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,7 +96,6 @@
 		4DC702B71E637FE600A8FD8C = {
 			isa = PBXGroup;
 			children = (
-				4D14DEF01E65B88100D916FB /* Charts.framework */,
 				4DC702C21E637FED00A8FD8C /* DeepWorkTracker */,
 				4DC702C11E637FED00A8FD8C /* Products */,
 				991E2F677DD2831A6BA40958 /* Pods */,
